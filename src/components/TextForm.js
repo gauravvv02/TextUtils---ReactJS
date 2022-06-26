@@ -36,14 +36,14 @@ export default function TextForm(props) {
   };
 
   const handleExtraSpaces = () => {
-    let newText = text.split(/[  ]+/);
+    let newText = text.split(/[ ]+/);
     setText(newText.join(" "))
     props.showAlert("Extra spaces are removed", "success")
   }
 
   const [text, setText] = useState("Enter text here");
   // text = "new text"; // Wrong way to set the state
-  // setText("new text"); // Correctway to change the state
+  // setText("new text"); // Correctway to change the state 
   return (
     <>
       <div className="container" style={{color: props.mode==='dark'?'white':'#323232'}}>
@@ -58,19 +58,19 @@ export default function TextForm(props) {
             rows="8"
           ></textarea>
         </div>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleUpClick}>
           Convert to Uppercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleLoClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleClearClick}>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleClearClick}>
           Clear Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCopy}>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleCopy}>
           Copy Text
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>
+        <button className="btn btn-primary mx-2 my-1" onClick={handleExtraSpaces}>
           Remove Extra Spaces
         </button>
       </div>
@@ -78,7 +78,7 @@ export default function TextForm(props) {
         <h1>Your Text Summary</h1>
         <p>
           {" "}
-          <b>{text.split(" ").length}</b> words and <b>{text.length}</b>{" "}
+          <b>{text.split(" ").filter((element)=>{return element.length!==0}).length}</b> words and <b>{text.length}</b>{" "}
           characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
